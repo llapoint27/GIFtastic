@@ -1,5 +1,9 @@
 
+$( document ).ready(function() {
+    
 var categories = ["Michael Jackson", "Volleyball", "Coffee", "Queen"];
+
+
 
 function alertGifName() {
   var gifName = $(this).attr("data-name");
@@ -11,8 +15,6 @@ function alertGifName() {
 //.then function
 
 }
-
-
 
 function renderButtons() {
   $("#buttons-view").empty();
@@ -40,4 +42,7 @@ $("#add-category").on("click", function(event) {
 $(document).on("click", ".gif", alertGifName);
 
 renderButtons();
+
+
+});
 
