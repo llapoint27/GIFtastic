@@ -1,3 +1,6 @@
+//TODO//
+//make them static and when clicked they animate
+
 
 $( document ).ready(function() {
     
@@ -10,6 +13,7 @@ function alertGifName() {
   alert(gifName);
 
   var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=qDH1m9TnFOR7xhDx6InDvpxIxKSJTSnS&limit=10";
+console.log(queryURL);
 
   //AJAX call
   $.ajax({
@@ -18,19 +22,25 @@ function alertGifName() {
   }).then(function(response) {
       console.log(response);
 
-    var myGif = $("<div>");
-    var rating = response.data.rating;
-    myGif.html("rating: " + rating);
-    
-    var imageGif = $("<div>");
-    var image = response.data
-    imageGif.html(image);
+    //Div for my GIFs
+    var myGif = $("<div class='gif'>");
 
+    //shows the rating
+    var rateGif = (response.data[i].rating);
+    var oneGif = $("<p>").text("Rating: " + rateGif);
+    myGif.html(oneGif);
 
+    //shows the GIFs
+    var imageGif = (response.data[i].images.fixed_height.url);
+    var display = $("<img>").attr("src", imageGif);
+    myGif.html(display);
+
+    $("#buttons-view").append(myGif);
 
 });
 }
 
+//function that displays the buttons
 function renderButtons() {
   $("#buttons-view").empty();
 
