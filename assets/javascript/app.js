@@ -2,12 +2,9 @@
 //make them static and when clicked they animate
 //gifs places 5 in each column
 
-
-
-
 $( document ).ready(function() {
     
-var categories = ["Weezer", "Artic Monkeys", "Muse", "Foo Fights", "Red Hot Chili Peppers", "Nirvana", "Green Day", "Pearl Jam", "Radiohead", "Smashing Pumpkins", "The Killers", "Nine Inch Nails", "blink-182", "The Cure", "Gorillaz", "The White Stripes", "Pixies", "Langhorne Slim", "Cage The Elephant", "The Strokes", "Bush", "Jane's Addiction", "Rage Against The Machine", "Modest Mouse", "Rolling Stones", "Kings of Leon", "The Black Keys", "Alabama Shakes"];
+var topics = ["Weezer", "Artic Monkeys", "Muse", "Foo Fights", "Red Hot Chili Peppers", "Nirvana", "Green Day", "Pearl Jam", "Radiohead", "Smashing Pumpkins", "The Killers", "Nine Inch Nails", "blink-182", "The Cure", "Gorillaz", "The White Stripes", "Pixies", "Langhorne Slim", "Cage The Elephant", "The Strokes", "Bush", "Jane's Addiction", "Rage Against The Machine", "Modest Mouse", "Rolling Stones", "Kings of Leon", "The Black Keys", "Alabama Shakes"];
 
 
 // function whatImage (x) {
@@ -54,8 +51,8 @@ console.log(queryURL);
     var imageGif = (results[i].images.fixed_height.url);
     var display = $("<img>").attr("src", imageGif);
     
-    myGif.append(oneGif);
     myGif.append(display);
+    myGif.append(oneGif);
 
 
     $("#image-view").prepend(myGif);
@@ -68,13 +65,13 @@ console.log(queryURL);
 function renderButtons() {
   $("#buttons-view").empty();
 
-  for (var i = 0; i < categories.length; i++) {
+  for (var i = 0; i < topics.length; i++) {
 
 
     var a = $("<button class='style'>");
     a.addClass("gif");
-    a.attr("data-name", categories[i]);
-    a.text(categories[i]);
+    a.attr("data-name", topics[i]);
+    a.text(topics[i]);
     $("#buttons-view").append(a);
   }
 };
@@ -83,17 +80,14 @@ $("#add-category").on("click", function(event) {
 
   event.preventDefault();
   var input = $("#category-input").val().trim();
-  categories.push(input);
+  topics.push(input);
   renderButtons();
- 
-
 
 });
 
 $(document).on("click", ".gif", alertGifName);
 
 renderButtons();
-
 
 });
 
