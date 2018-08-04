@@ -8,6 +8,7 @@ h1 {
     text-align: center;
     padding: 20px;
 }
+
 .display-4 {
     font-size: 30px;
 }
@@ -32,7 +33,3 @@ button:hover {
 #add-category:hover {
     background: yellow;
 }
-
-/* input:invalid {
-    box-shadow: 0 0 5px 1px red;
-  } */

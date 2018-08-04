@@ -1,6 +1,7 @@
 //TODO
 //make them static and when clicked they animate
-//replace the 10 gifs with the next category you click on
+//gifs places 5 in each column
+
 
 
 
