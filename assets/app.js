@@ -10,7 +10,7 @@ var categories = ["Michael Jackson", "Volleyball", "Coffee", "Queen"];
 function alertGifName() {
   var gifName = $(this).attr("data-name");
 
-  alert(gifName);
+//   alert(gifName);
 
   var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=qDH1m9TnFOR7xhDx6InDvpxIxKSJTSnS&limit=10";
 console.log(queryURL);
@@ -22,21 +22,28 @@ console.log(queryURL);
   }).then(function(response) {
       console.log(response);
 
-    //Div for my GIFs
-    var myGif = $("<div class='gif'>");
+    var results = response.data;
+
+    for (var i = 0; i < results.length; i++) {
+
+
+    //Div for my GIFs (maybe add class?)
+    var myGif = $("<div>");
 
     //shows the rating
-    var rateGif = (response.data[i].rating);
+    var rateGif = (results[i].rating);
     var oneGif = $("<p>").text("Rating: " + rateGif);
-    myGif.html(oneGif);
+    
 
     //shows the GIFs
-    var imageGif = (response.data[i].images.fixed_height.url);
+    var imageGif = (results[i].images.fixed_height.url);
     var display = $("<img>").attr("src", imageGif);
-    myGif.html(display);
+    
+    myGif.append(oneGif);
+    myGif.append(display);
 
-    $("#buttons-view").append(myGif);
-
+    $("#image-view").prepend(myGif);
+  }
 });
 }
 
