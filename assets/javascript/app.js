@@ -13,7 +13,7 @@ function alertGifName() {
 
 //   alert(gifName);
 
-  var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=qDH1m9TnFOR7xhDx6InDvpxIxKSJTSnS&limit=10";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gifName + "&api_key=qDH1m9TnFOR7xhDx6InDvpxIxKSJTSnS&limit=10";
 console.log(queryURL);
 
   //AJAX call
@@ -42,6 +42,7 @@ console.log(queryURL);
     var display = clickGif.attr("src", imageGif);
 
     var staticSrc = (results[i].images.fixed_height_still.url);
+
     clickGif.attr("src", staticSrc);
     clickGif.attr("data-state", "still");
     clickGif.attr("data-still", staticSrc);
