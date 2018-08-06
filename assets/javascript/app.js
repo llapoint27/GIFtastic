@@ -29,7 +29,7 @@ console.log(queryURL);
 
     //Div for my GIFs 
     var myGif = $("<div class='gifs'>");
-    var clickGif = $("<img>");
+    var clickGif = $("<img class='images'>");
 
     //shows the rating
     var rateGif = (results[i].rating);
@@ -60,13 +60,13 @@ console.log(queryURL);
 });
 }
 
-$(document).on("click", pausePlayGifs);
+$(document).on("click", '.images', pausePlayGifs);
 
 //Function accesses "data-state" attribute and depending on status, changes image source to "data-animate" or "data-still"
 function pausePlayGifs() {
 
    var state = $(this).attr("data-state");
-   
+
     if (state === "still") {
       $(this).attr("src", $(this).attr("data-animate"));
       $(this).attr("data-state", "animate");
