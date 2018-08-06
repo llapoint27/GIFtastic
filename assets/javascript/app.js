@@ -1,5 +1,5 @@
 //TODO
-//make them static and when clicked they animate
+//make gifs static and when clicked they animate
 //gifs places 5 in each column
 
 $( document ).ready(function() {
@@ -7,7 +7,7 @@ $( document ).ready(function() {
 var topics = ["Weezer", "Artic Monkeys", "Muse", "Foo Fights", "Red Hot Chili Peppers", "Nirvana", "Green Day", "Pearl Jam", "Radiohead", "Smashing Pumpkins", "The Killers", "Nine Inch Nails", "blink-182", "The Cure", "Gorillaz", "The White Stripes", "Pixies", "Langhorne Slim", "Cage The Elephant", "The Strokes", "Bush", "Jane's Addiction", "Rage Against The Machine", "Modest Mouse", "Rolling Stones", "Kings of Leon", "The Black Keys", "Alabama Shakes"];
 
 
-function alertGifName() {
+function showGif() {
   var gifName = $(this).attr("data-name");
   $("#image-view").empty();
 
@@ -49,11 +49,12 @@ console.log(queryURL);
     clickGif.attr("data-animate", imageGif);
     
 
-    myGif.append(clickGif);
     myGif.append(display);
     myGif.append(oneGif);
 
+
     $("#image-view").prepend(myGif);
+
 
   }
 });
@@ -65,15 +66,18 @@ $(document).on("click", pausePlayGifs);
 function pausePlayGifs() {
    var state = $(this).attr("data-state");
     if (state === "still") {
-        
       $(this).attr("src", $(this).attr("data-animate"));
       $(this).attr("data-state", "animate");
 
     } else {
       $(this).attr("src", $(this).attr("data-still"));
       $(this).attr("data-state", "still");
+      console.log("this is running");
 }
+
 }
+
+
 
 //function that displays the buttons
 function renderButtons() {
@@ -99,9 +103,10 @@ $("#add-category").on("click", function(event) {
 
 });
 
-$(document).on("click", ".gif", alertGifName);
+$(document).on("click", ".gif", showGif);
 
 renderButtons();
+
 
 });
 
