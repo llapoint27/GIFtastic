@@ -29,7 +29,7 @@ console.log(queryURL);
 
 
     //Div for my GIFs (maybe add class?)
-    var myGif = $("<div>");
+    var myGif = $("<div class='col-md-4'>");
     var clickGif = $("<img>");
 
     //shows the rating
