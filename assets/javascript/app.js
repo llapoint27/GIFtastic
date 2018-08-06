@@ -7,17 +7,6 @@ $( document ).ready(function() {
 var topics = ["Weezer", "Artic Monkeys", "Muse", "Foo Fights", "Red Hot Chili Peppers", "Nirvana", "Green Day", "Pearl Jam", "Radiohead", "Smashing Pumpkins", "The Killers", "Nine Inch Nails", "blink-182", "The Cure", "Gorillaz", "The White Stripes", "Pixies", "Langhorne Slim", "Cage The Elephant", "The Strokes", "Bush", "Jane's Addiction", "Rage Against The Machine", "Modest Mouse", "Rolling Stones", "Kings of Leon", "The Black Keys", "Alabama Shakes"];
 
 
-// function whatImage (x) {
-// 	if (clicked) {
-// 		$(x).attr("src", $(x).attr("data-switch"));
-
-// 	}
-// 	else {
-// 		$(x).attr("src", $(x).attr("data-switch-back"));
-// 	}
-// };
-
-
 function alertGifName() {
   var gifName = $(this).attr("data-name");
   $("#image-view").empty();
@@ -41,6 +30,7 @@ console.log(queryURL);
 
     //Div for my GIFs (maybe add class?)
     var myGif = $("<div>");
+    var clickGif = $("<img>");
 
     //shows the rating
     var rateGif = (results[i].rating);
@@ -49,16 +39,39 @@ console.log(queryURL);
 
     //shows the GIFs
     var imageGif = (results[i].images.fixed_height.url);
-    var display = $("<img>").attr("src", imageGif);
+    var display = clickGif.attr("src", imageGif);
+
+    var staticSrc = (results[i].images.fixed_height_still.url);
+    clickGif.attr("src", staticSrc);
+    clickGif.attr("data-state", "still");
+    clickGif.attr("data-still", staticSrc);
+    clickGif.attr("data-animate", imageGif);
     
+
+    myGif.append(clickGif);
     myGif.append(display);
     myGif.append(oneGif);
-
 
     $("#image-view").prepend(myGif);
 
   }
 });
+}
+
+$(document).on("click", pausePlayGifs);
+
+//Function accesses "data-state" attribute and depending on status, changes image source to "data-animate" or "data-still"
+function pausePlayGifs() {
+   var state = $(this).attr("data-state");
+    if (state === "still") {
+        
+      $(this).attr("src", $(this).attr("data-animate"));
+      $(this).attr("data-state", "animate");
+
+    } else {
+      $(this).attr("src", $(this).attr("data-still"));
+      $(this).attr("data-state", "still");
+}
 }
 
 //function that displays the buttons
