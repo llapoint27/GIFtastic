@@ -8,6 +8,10 @@ h1 {
     padding: 20px;
 }
 
+.wrapper {
+    overflow-x: hidden;
+}
+
 .display-4 {
     font-size: 30px;
 }
@@ -16,6 +20,7 @@ button {
     background: lightskyblue;
     margin: 5px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 button:hover {
@@ -32,9 +37,9 @@ button:hover {
     background: yellow;
 }
 
-.image-view {
-        display: inline;
-        flex-wrap: wrap;
-    }
 
+.gifs {
+    margin: 5px 20px;
+    display: inline-block;
+}
 

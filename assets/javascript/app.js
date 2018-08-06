@@ -1,6 +1,5 @@
 //TODO
 //make gifs static and when clicked they animate
-//gifs places 5 in each column
 
 $( document ).ready(function() {
     
@@ -28,8 +27,8 @@ console.log(queryURL);
     for (var i = 0; i < results.length; i++) {
 
 
-    //Div for my GIFs (maybe add class?)
-    var myGif = $("<div class='col-md-4'>");
+    //Div for my GIFs 
+    var myGif = $("<div class='gifs'>");
     var clickGif = $("<img>");
 
     //shows the rating
@@ -41,6 +40,7 @@ console.log(queryURL);
     var imageGif = (results[i].images.fixed_height.url);
     var display = clickGif.attr("src", imageGif);
 
+    
     var staticSrc = (results[i].images.fixed_height_still.url);
 
     clickGif.attr("src", staticSrc);
@@ -64,7 +64,9 @@ $(document).on("click", pausePlayGifs);
 
 //Function accesses "data-state" attribute and depending on status, changes image source to "data-animate" or "data-still"
 function pausePlayGifs() {
+
    var state = $(this).attr("data-state");
+   
     if (state === "still") {
       $(this).attr("src", $(this).attr("data-animate"));
       $(this).attr("data-state", "animate");
