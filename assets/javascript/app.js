@@ -8,7 +8,7 @@ var topics = ["Weezer", "Artic Monkeys", "Muse", "Foo Fights", "Red Hot Chili Pe
 
 function showGif() {
   var gifName = $(this).attr("data-name");
-  $("#image-view").empty();
+  // $("#image-view").empty();
 
 //   alert(gifName);
 
@@ -47,7 +47,7 @@ console.log(queryURL);
     clickGif.attr("data-state", "still");
     clickGif.attr("data-still", staticSrc);
     clickGif.attr("data-animate", imageGif);
-    
+
 
     myGif.append(display);
     myGif.append(oneGif);
